@@ -58,7 +58,8 @@ class MessageHandler
         $query->bindParam(":senderId", $senderId);
         $query->bindParam(":receiverId", $receiverId);
         $query->execute();
-        $dialogId = $query->fetch(PDO::FETCH_ASSOC)['id'];
+        //$dialogId = $query->fetch(PDO::FETCH_ASSOC)['id'];
+        $dialogId = $query->fetch(PDO::FETCH_ASSOC);
         if (!$dialogId) {
             return $this->createDialog($senderId, $receiverId);
         }

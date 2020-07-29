@@ -388,6 +388,9 @@ class searchProcessor
                 $query->bindParam(':mainuser', $uploaded_by);
                 $query->execute();
                 $dbresult = $query->fetch(PDO::FETCH_ASSOC);
+                if (!$dbresult){
+                    continue;
+                }
                 if (strcmp($dbresult['groupname'], 'friends')) {
                     $key = array_search($value, $videowithblock);
                     array_splice($videowithblock, $key, 1);

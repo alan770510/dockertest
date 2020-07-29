@@ -160,6 +160,10 @@ class User
         $query->bindParam(":video_id", $video_id);
         $query->bindParam(":user_id", $this->uid);
         $query->execute();
+        $dbresult = $query->fetch(PDO::FETCH_ASSOC);
+        if (!$dbresult){
+            return false;
+        }
         return $query->fetch(PDO::FETCH_ASSOC)['video_id'];
     }
 
