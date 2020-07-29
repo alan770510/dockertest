@@ -6,6 +6,10 @@ if ((!isset($_GET['channel'])) || $_GET['channel'] == "") {
     echo "<script>alert('You are not choose any channel, redirect to Home page after click'); location.href = 'index.php';</script>";
 }
 $channel = new channelProcessor($conn, $_GET['channel'], $usernameLoggedIn);
+if (!$channel->getUserIdFromUsername($_GET['channel'])){
+    echo "<script>alert('This channel does not exist, redirect to Home page after click'); location.href = 'index.php';</script>";
+}
+
 ?>
 <main class="main-section-container" id="main">
     <div class="main-content-container">
